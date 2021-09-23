@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Container } from '@material-ui/core';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Cryptocurrencies from './cryptocurrencies';
-import News from './News';
+import LatestNews from './news';
 
 export default function Home() {
 	const { data, isFetching } = useGetCryptosQuery(10);
@@ -73,12 +73,12 @@ export default function Home() {
 					>
 						<Typography variant={'h4'}>Latest Crypto News</Typography>
 						<Typography variant={'h6'} sx={{ color: '#0071bd' }}>
-							{/* <Link href="/news">
+							<Link href="/news">
 								<a>Show More</a>
-							</Link> */}
+							</Link>
 						</Typography>
 					</div>
-					<News></News>
+					<LatestNews />
 				</Container>
 			)}
 		</>
