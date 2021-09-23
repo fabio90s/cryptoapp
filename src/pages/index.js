@@ -73,9 +73,9 @@ export default function Home() {
 					>
 						<Typography variant={'h4'}>Latest Crypto News</Typography>
 						<Typography variant={'h6'} sx={{ color: '#0071bd' }}>
-							<Link href="/news">
+							{/* <Link href="/news">
 								<a>Show More</a>
-							</Link>
+							</Link> */}
 						</Typography>
 					</div>
 					<News></News>
