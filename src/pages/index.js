@@ -1,5 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import millify from 'millify';
 import { Typography, Grid, Paper } from '@mui/material';
@@ -8,6 +6,8 @@ import { Container } from '@material-ui/core';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Cryptocurrencies from './cryptocurrencies';
 import LatestNews from './news';
+import Spinner from '../components/Spinner';
+
 
 export default function Home() {
 	const { data, isFetching } = useGetCryptosQuery(10);
@@ -15,10 +15,9 @@ export default function Home() {
 	const globalStats = data?.data?.stats;
 	return (
 		<>
-			{isFetching && <p>Loading...</p>}
+			{isFetching && <Spinner/>}
 			{!isFetching && (
 				<Container  className={styles.main_container}>
-					{/* <Grid item xs={6} sm={12} md={12} lg={12}> */}
 						<div className={styles.first_section}>
 							<Typography variant="h4" sx={{ pt: 2 }}>
 								Global Crypto Status
@@ -51,8 +50,7 @@ export default function Home() {
 								</Grid>
 							</Grid>
 						</div>
-					{/* </Grid> */}
-					{/* <Grid item xs={12} sm={12} md={12} lg={12}> */}
+			
 					<div
 						style={{
 							display: 'flex',
@@ -68,7 +66,6 @@ export default function Home() {
 							<Link href="/cryptocurrencies">Show More</Link>
 						</Typography>
 					</div>
-					{/* </Grid> */}
 					<Cryptocurrencies simplified={true} />
 					<div
 						style={{
@@ -84,7 +81,7 @@ export default function Home() {
 							</Link>
 						</Typography>
 					</div>
-					<LatestNews />
+					<LatestNews simplified={true}/>
 				</Container>
 			)}
 		</>

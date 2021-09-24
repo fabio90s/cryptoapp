@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import styles from '../styles/Cryptocurrencies.module.css';
+import Spinner from '../components/Spinner';
+
 
 const Cryptocurrencies = (props) => {
 	const count = props.simplified ? 10 : 100;
@@ -38,7 +40,7 @@ const Cryptocurrencies = (props) => {
 					/>
 				</Container>
 			)}
-			{isFetching && <p>Loading...</p>}
+			{isFetching && <Spinner/>}
 			{!isFetching && (
 				<Container>
 					<Grid spacing={3} container item direction="row">

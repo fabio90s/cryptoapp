@@ -24,7 +24,7 @@ const Navbar = () => {
 		<div className={matches ? styles.navbar : styles.sidebar}>
 			<div className={styles.logo_container}>
 				<Typography className={styles.logo}>
-					<Link href="/">Cryptoverse</Link>
+					<Link href="/">CryptoNews</Link>
 				</Typography>
 				<Button className={styles.menu_control_container}></Button>
 			</div>
