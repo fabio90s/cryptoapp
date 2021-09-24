@@ -3,3 +3,10 @@
     margin-bottom: 2rem;
 
 }
+
+
+@media all and (max-width: 375px) {
+	.searchField{
+        margin-top: 5rem;
+    }
+}

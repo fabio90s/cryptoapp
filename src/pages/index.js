@@ -17,37 +17,42 @@ export default function Home() {
 		<>
 			{isFetching && <p>Loading...</p>}
 			{!isFetching && (
-				<Container>
-					<Typography variant="h4" sx={{ pt: 2 }}>
-						Global Crypto Status
-					</Typography>
-					<Grid spacing={2} container direction="row" sx={{ pt: 2 }}>
-						<Grid item xs={12} sm={4} md={4} lg={4}>
-							Total Cryptocurrencies
-							<br />
-							<strong>{globalStats.total.toLocaleString('en-US')}</strong>
-						</Grid>
-						<Grid item xs={12} sm={4} md={4} lg={4}>
-							Total Exchanges
-							<br />
-							<strong>{millify(globalStats.totalExchanges)}</strong>
-						</Grid>
-						<Grid item xs={12} sm={4} md={4} lg={4}>
-							Total Market Cap
-							<br />
-							<strong>{millify(globalStats.totalMarketCap)}</strong>
-						</Grid>
-						<Grid item xs={12} sm={4} md={4} lg={4}>
-							Total 24h Volume
-							<br />
-							<strong>{millify(globalStats.total24hVolume)}</strong>
-						</Grid>
-						<Grid item xs={12} sm={4} md={4} lg={4}>
-							Total Markets
-							<br />
-							<strong>{millify(globalStats.totalMarkets)}</strong>
-						</Grid>
-					</Grid>
+				<Container  className={styles.main_container}>
+					{/* <Grid item xs={6} sm={12} md={12} lg={12}> */}
+						<div className={styles.first_section}>
+							<Typography variant="h4" sx={{ pt: 2 }}>
+								Global Crypto Status
+							</Typography>
+							<Grid spacing={2} container direction="row" sx={{ pt: 2 }}>
+								<Grid item xs={12} sm={4} md={4} lg={4}>
+									Total Cryptocurrencies
+									<br />
+									<strong>{globalStats.total.toLocaleString('en-US')}</strong>
+								</Grid>
+								<Grid item xs={12} sm={4} md={4} lg={4}>
+									Total Exchanges
+									<br />
+									<strong>{millify(globalStats.totalExchanges)}</strong>
+								</Grid>
+								<Grid item xs={12} sm={4} md={4} lg={4}>
+									Total Market Cap
+									<br />
+									<strong>{millify(globalStats.totalMarketCap)}</strong>
+								</Grid>
+								<Grid item xs={12} sm={4} md={4} lg={4}>
+									Total 24h Volume
+									<br />
+									<strong>{millify(globalStats.total24hVolume)}</strong>
+								</Grid>
+								<Grid item xs={12} sm={4} md={4} lg={4}>
+									Total Markets
+									<br />
+									<strong>{millify(globalStats.totalMarkets)}</strong>
+								</Grid>
+							</Grid>
+						</div>
+					{/* </Grid> */}
+					{/* <Grid item xs={12} sm={12} md={12} lg={12}> */}
 					<div
 						style={{
 							display: 'flex',
@@ -56,13 +61,14 @@ export default function Home() {
 							marginBottom: 40,
 						}}
 					>
-						<Typography variant={'h4'}>
+						<Typography variant={'h4'} xs={4}>
 							Top 10 Cryptocurrencies in the world
 						</Typography>
 						<Typography variant={'h6'} sx={{ color: '#0071bd' }}>
 							<Link href="/cryptocurrencies">Show More</Link>
 						</Typography>
 					</div>
+					{/* </Grid> */}
 					<Cryptocurrencies simplified={true} />
 					<div
 						style={{

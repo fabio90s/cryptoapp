@@ -1,6 +1,21 @@
 .heading  {
   margin-top: 10px;
 }
+
+.first_section {
+  background-color: #F9F9F9;
+  width: 100%;
+  word-break: break-all;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+.main_container {
+  margin-left: 150px;
+  word-wrap: normal;
+  overflow: hidden;
+}
+
+
 /* .container {
   min-height: 100vh;
   padding: 0 0.5rem;

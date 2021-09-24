@@ -1,12 +1,5 @@
 import React, { useState } from 'react';
-import {
-	Button,
-	Menu,
-	MenuItem,
-	Typography,
-	Avatar,
-	MenuList,
-} from '@mui/material';
+import { Button, MenuItem, Typography, MenuList } from '@mui/material';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import {
@@ -15,20 +8,36 @@ import {
 	HomeOutlined,
 	MoneyOutlined,
 } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
+
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Navbar = () => {
+	const [drawer, setDrawer] = useState(false);
+	const matches = useMediaQuery('(max-width:920px)');
+	const drawerHandler = () => {
+		setDrawer(!drawer);
+	};
+
 	return (
-		<div className={styles.nav_container}>
+		<div className={matches ? styles.navbar : styles.sidebar}>
 			<div className={styles.logo_container}>
 				<Typography className={styles.logo}>
 					<Link href="/">Cryptoverse</Link>
 				</Typography>
 				<Button className={styles.menu_control_container}></Button>
 			</div>
-			<MenuList className={styles.menu} variant={'menu'}>
-				<MenuItem >
-					<HomeOutlined sx={{ marginRight: 1}} />
-					<Link href="/" >Home</Link>
+			<MenuList
+				className={
+					(!matches && styles.sidebar_menu) ||
+					(!drawer && matches ? styles.navbar_list : styles.nav_active)
+				}
+				variant={'menu'}
+			>
+				<MenuItem>
+					<HomeOutlined sx={{ marginRight: 1 }} />
+					<Link href="/">Home</Link>
 				</MenuItem>
 				<MenuItem sx={{ marginTop: 1 }}>
 					<FoundationOutlined sx={{ marginRight: 1 }} />
@@ -43,6 +52,15 @@ const Navbar = () => {
 					<Link href="/news">News</Link>
 				</MenuItem>
 			</MenuList>
+			{matches && (
+				<div>
+					{!drawer ? (
+						<MenuIcon onClick={drawerHandler}></MenuIcon>
+					) : (
+						<MenuOpenIcon onClick={drawerHandler} />
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
