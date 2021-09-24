@@ -70,7 +70,7 @@ const LatestNews = (props) => {
 							>
 								<Card sx={{ maxWidth: 345, margin: 2 }}>
 									<Link href={news.url}>
-										<a href={news.url} target="_blank">
+										<a href={news.url} target="_blank" rel="noreferrer">
 											<CardActionArea>
 												<CardHeader
 													title={<strong>{news.name}</strong>}
