@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import Navbar from '../components/Navbar';
+import Layout from '../components/Layout';
 import Footer from '../components/Footer';
 import { Provider } from 'react-redux';
 import store from '../store/store';
@@ -10,10 +10,10 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<Provider store={store}>
 			<Paper elevation={0}>
-				<Navbar></Navbar>
+				<Layout>
 				<main>
 					<Head>
-						<title>My page title</title>
+						<title>Crypto News</title>
 						<meta
 							name="viewport"
 							content="initial-scale=1.0, width=device-width"
@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps }) {
 					<Component {...pageProps} />
 					<Footer></Footer>
 				</main>
+				</Layout>
 			</Paper>
 		</Provider>
 	);

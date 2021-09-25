@@ -15,7 +15,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Navbar = () => {
 	const [drawer, setDrawer] = useState(false);
-	const matches = useMediaQuery('(max-width:920px)');
+	const matches = useMediaQuery('(max-width:1020px)');
 	const drawerHandler = () => {
 		setDrawer(!drawer);
 	};
@@ -26,7 +26,6 @@ const Navbar = () => {
 				<Typography className={styles.logo}>
 					<Link href="/">CryptoNews</Link>
 				</Typography>
-				<Button className={styles.menu_control_container}></Button>
 			</div>
 			<MenuList
 				className={
@@ -53,7 +52,7 @@ const Navbar = () => {
 				</MenuItem>
 			</MenuList>
 			{matches && (
-				<div>
+				<div className={styles.icon}>
 					{!drawer ? (
 						<MenuIcon onClick={drawerHandler}></MenuIcon>
 					) : (

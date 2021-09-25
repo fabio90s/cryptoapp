@@ -15,8 +15,8 @@ main {
 	margin-left: 250px;
 }
 
-
-:root {
+:root,
+#__next {
 	--text-primary: #000;
 	--bgPrimary: #fff;
 	--bgSecondary: #f9f9f9;
@@ -34,8 +34,13 @@ a {
 	box-sizing: border-box;
 }
 
-.MuiMenuItem-root {
+/* .MuiMenuItem-root {
 	height: 40px;
+} */
+
+.css-11dwu8r-MuiButtonBase-root-MuiMenuItem-root,
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+	min-height: 35px;
 }
 
 .css-i4bv87-MuiSvgIcon-root {
@@ -43,11 +48,19 @@ a {
 	margin-right: 1rem;
 }
 
-@media all and (max-width: 920px) {
+@media all and (max-width: 1020px) {
 	main {
 		margin: 0;
 	}
 	.MuiPaper-elevation0 {
 		margin-left: inherit;
 	}
+}
+
+.MuiAlert-root {
+	margin-left: 250px;
+}
+
+a:hover {
+	background-color: var(--pink);
 }

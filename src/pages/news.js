@@ -33,10 +33,9 @@ import {
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Spinner from '../components/Spinner';
 
-
 const LatestNews = (props) => {
 	const [isCopied, setIsCopied] = useState(false);
-	const [newsIndex, setNewsIndex] = useState(0);
+	const [newsIndex, setNewsIndex] = useState(null);
 	const altImg =
 		'https://cdn.icon-icons.com/icons2/1386/PNG/512/generic-crypto-cryptocurrency-cryptocurrencies-cash-money-bank-payment_95642.png';
 
@@ -44,6 +43,8 @@ const LatestNews = (props) => {
 		newsCategory: 'Cryptocurrency',
 		count: props.simplified ? 10 : 100,
 	});
+
+
 	return (
 		<>
 			{!props.simplified && (
@@ -51,7 +52,7 @@ const LatestNews = (props) => {
 					Latest Crypto News
 				</Typography>
 			)}
-			{isFetching && <Spinner/>}
+			{isFetching && <Spinner />}
 			{!isFetching && (
 				<Container
 					sx={{ marginTop: 5, display: 'flex', justifyContent: 'center' }}
@@ -68,9 +69,9 @@ const LatestNews = (props) => {
 								lg={4}
 								className={styles.main_news}
 							>
-								<Card sx={{ maxWidth: 345, margin: 2 }}>
-									<Link href={news.url}>
-										<a href={news.url} target="_blank" rel="noreferrer">
+								<Card sx={{ maxWidth: 345, margin: 2 }} raised={true}>
+									<Link passHref={true} href={news.url}>
+										<a target="_blank" rel="noreferrer">
 											<CardActionArea>
 												<CardHeader
 													title={<strong>{news.name}</strong>}
@@ -150,7 +151,7 @@ const LatestNews = (props) => {
 									</CardActions>
 									{isCopied && newsIndex === index && (
 										<div className={styles.alert}>
-											<Alert onClose={() => setIsCopied(false)}>Copied!</Alert>
+											<Alert onClose={() => setIsCopied(false) && setNewsIndex(null)}>Copied!</Alert>
 										</div>
 									)}
 								</Card>

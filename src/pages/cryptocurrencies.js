@@ -43,12 +43,12 @@ const Cryptocurrencies = (props) => {
 			{isFetching && <Spinner/>}
 			{!isFetching && (
 				<Container>
-					<Grid spacing={3} container item direction="row">
+					<Grid spacing={2} container item direction="row">
 						{cryptos?.map((crypto) => (
 							<Grid item key={crypto.id} xs={12} sm={6} md={4} lg={3}>
-								<Link href={`/crypto/${crypto.id}`}>
+								{/* <Link > */}
 									<Card raised={true}>
-										<CardActionArea>
+										<CardActionArea href={`/crypto/${crypto.id}`}>
 										<CardHeader
 											title={`${crypto.rank}. ${crypto.name}`}
 											avatar={
@@ -66,7 +66,7 @@ const Cryptocurrencies = (props) => {
 										</CardContent>
 										</CardActionArea>
 									</Card>
-								</Link>
+								{/* </Link> */}
 							</Grid>
 						))}
 					</Grid>
