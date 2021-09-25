@@ -80,6 +80,7 @@
 	height: 200px;
 	width: 100%;
 	background-color: rgb(2, 39, 75);
+	z-index: 1;
 }
 
 .rightSide ul {

@@ -36,9 +36,11 @@ a {
 	box-sizing: border-box;
 }
 
-/* .MuiMenuItem-root {
-	height: 40px;
-} */
+.MuiMenuItem-root {
+	min-height: 40px;
+	padding-bottom: 1px;
+	margin-top: 2px;
+}
 
 .css-11dwu8r-MuiButtonBase-root-MuiMenuItem-root,
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
