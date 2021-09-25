@@ -23,8 +23,8 @@
 }
 
 .icon {
-	float: right;
-	display: block;
+	position: fixed;
+	right: 0;
 }
 .logo_container {
 	background-color: rgb(2, 39, 75);
@@ -35,7 +35,7 @@
 }
 
 .logo {
-		display: flex;
+	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	padding-left: 1rem;
@@ -67,9 +67,33 @@
 	display: flex;
 	flex-direction: column;
 	top: 123px;
-	z-index: 1;
+	z-index: 0;
 	right: 0;
 	align-items: flex-start;
 	width: 300px;
 }
 
+.rightSide {
+	position: absolute;
+	right: 0px;
+	top: 80px;
+	height: 200px;
+	width: 100%;
+	background-color: rgb(2, 39, 75);
+}
+
+.rightSide ul {
+	position: absolute;
+	right: 0px;
+	top: 30px;
+	height: 100px;
+	width: 100%;
+	background-color: rgb(2, 39, 75);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.rightSide:global(#hidden) {
+	display: none;
+}

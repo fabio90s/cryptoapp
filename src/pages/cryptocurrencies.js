@@ -46,9 +46,9 @@ const Cryptocurrencies = (props) => {
 					<Grid spacing={2} container item direction="row">
 						{cryptos?.map((crypto) => (
 							<Grid item key={crypto.id} xs={12} sm={6} md={4} lg={3}>
-								{/* <Link > */}
+								<Link href={`/crypto/${crypto.id}`}>
 									<Card raised={true}>
-										<CardActionArea href={`/crypto/${crypto.id}`}>
+										<CardActionArea>
 										<CardHeader
 											title={`${crypto.rank}. ${crypto.name}`}
 											avatar={
@@ -66,7 +66,7 @@ const Cryptocurrencies = (props) => {
 										</CardContent>
 										</CardActionArea>
 									</Card>
-								{/* </Link> */}
+						   	</Link> 
 							</Grid>
 						))}
 					</Grid>

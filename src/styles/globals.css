@@ -15,7 +15,7 @@ main {
 	margin-left: 250px;
 }
 
-:root,
+:root, body,
 #__next {
 	--text-primary: #000;
 	--bgPrimary: #fff;
@@ -23,6 +23,7 @@ main {
 	--pink: #0071bd;
 	--light-blue: #e6f7ff;
 	--border: #d9d9d9;
+	width: 100%;
 }
 
 a {
@@ -54,6 +55,7 @@ a {
 	}
 	.MuiPaper-elevation0 {
 		margin-left: inherit;
+		width: 100%;
 	}
 }
 
