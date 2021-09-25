@@ -17,5 +17,5 @@ export const cryptoApi = createApi({
 		}),
 	}),
 });
-
+// count ? `/coins?limit=${count}` : '/coins?';
 export const { useGetCryptosQuery } = cryptoApi;

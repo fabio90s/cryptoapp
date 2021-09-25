@@ -32,19 +32,27 @@ import {
 } from 'react-share';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import Spinner from '../components/Spinner';
+import NewsSelect from '../components/Select';
 
 const LatestNews = (props) => {
 	const [isCopied, setIsCopied] = useState(false);
 	const [newsIndex, setNewsIndex] = useState(null);
+	const [newsCategory, setNewsCategory] = useState('Cryptocurrencies');
 	const altImg =
 		'https://cdn.icon-icons.com/icons2/1386/PNG/512/generic-crypto-cryptocurrency-cryptocurrencies-cash-money-bank-payment_95642.png';
 
 	const { data: cryptoNews, isFetching } = useGetNewsQuery({
-		newsCategory: 'Cryptocurrency',
+		newsCategory,
 		count: props.simplified ? 10 : 100,
 	});
 
-
+	const clickHandler = (coin) => {
+		if (coin?.target?.textContent === 'All') {
+			setNewsCategory('Cryptocurrencies');
+		} else {
+			setNewsCategory(coin?.target?.textContent + ' ' + 'crypto');
+		}
+	};
 	return (
 		<>
 			{!props.simplified && (
@@ -52,6 +60,7 @@ const LatestNews = (props) => {
 					Latest Crypto News
 				</Typography>
 			)}
+			<NewsSelect onClick={clickHandler}></NewsSelect>
 			{isFetching && <Spinner />}
 			{!isFetching && (
 				<Container
@@ -151,7 +160,11 @@ const LatestNews = (props) => {
 									</CardActions>
 									{isCopied && newsIndex === index && (
 										<div className={styles.alert}>
-											<Alert onClose={() => setIsCopied(false) && setNewsIndex(null)}>Copied!</Alert>
+											<Alert
+												onClose={() => setIsCopied(false) && setNewsIndex(null)}
+											>
+												Copied!
+											</Alert>
 										</div>
 									)}
 								</Card>

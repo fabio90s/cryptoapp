@@ -7,4 +7,6 @@ export default configureStore({
 		[cryptoApi.reducerPath]: cryptoApi.reducer,
 		[cryptoBingApi.reducerPath]: cryptoBingApi.reducer,
 	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware().concat(cryptoApi.middleware, cryptoBingApi.middleware),
 });

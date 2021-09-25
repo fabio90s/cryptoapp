@@ -21,14 +21,12 @@ const Cryptocurrencies = (props) => {
 	const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
 	const [cryptos, setCryptos] = useState([]);
 	const [search, setSearch] = useState('');
-
 	useEffect(() => {
 		const filteredData = cryptosList?.data?.coins.filter((coin) =>
 			coin.name.toLowerCase().includes(search.toLowerCase())
 		);
 		setCryptos(filteredData);
 	}, [cryptosList, search]);
-
 	return (
 		<>
 			{!props.simplified && (
@@ -46,9 +44,9 @@ const Cryptocurrencies = (props) => {
 					<Grid spacing={2} container item direction="row">
 						{cryptos?.map((crypto) => (
 							<Grid item key={crypto.id} xs={12} sm={6} md={4} lg={3}>
-								<Link href={`/crypto/${crypto.id}`}>
+								<Link passHref={true} href={`/crypto/${crypto.id}`}>
 									<Card raised={true}>
-										<CardActionArea>
+										{/* <CardActionArea> */}
 										<CardHeader
 											title={`${crypto.rank}. ${crypto.name}`}
 											avatar={
@@ -64,7 +62,7 @@ const Cryptocurrencies = (props) => {
 											<p>Market Cap: {millify(crypto.marketCap)}</p>
 											<p>Daily Change: {millify(crypto.change)}%</p>
 										</CardContent>
-										</CardActionArea>
+										{/* </CardActionArea> */}
 									</Card>
 						   	</Link> 
 							</Grid>

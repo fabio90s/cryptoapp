@@ -25,7 +25,7 @@ const Navbar = () => {
 		<div className={matches ? styles.navbar : styles.sidebar}>
 			<div className={styles.logo_container}>
 				<Typography className={styles.logo}>
-					<Link href="/">CryptoNews</Link>
+					<Link  passHref={true} href="/">CryptoNews</Link>
 				</Typography>
 			</div>
 
@@ -34,25 +34,25 @@ const Navbar = () => {
 				id={showLinks ? 'hidden' : 'active'}
 			>
 				<MenuList className={!matches && styles.sidebar_menu} variant={'menu'}>
-					<Link href="/">
+					<Link  passHref={true} href="/">
 						<MenuItem>
 							<HomeOutlined sx={{ marginRight: 1 }} />
 							Home
 						</MenuItem>
 					</Link>
-					<Link href="/cryptocurrencies">
+					<Link  passHref={true} href="/cryptocurrencies">
 						<MenuItem sx={{ marginTop: 1 }}>
 							<FoundationOutlined sx={{ marginRight: 1 }} />
 							Cryptocurrencies
 						</MenuItem>
 					</Link>
-					<Link href="/exchanges">
+					<Link passHref={true}  href="/exchanges">
 						<MenuItem sx={{ marginTop: 1 }}>
 							<MoneyOutlined sx={{ marginRight: 1 }} />
 							Exchanges
 						</MenuItem>
 					</Link>
-					<Link href="/news">
+					<Link  passHref={true} href="/news">
 						<MenuItem sx={{ marginTop: 1 }}>
 							<ChatBubbleOutlined sx={{ marginRight: 1 }} />
 							News

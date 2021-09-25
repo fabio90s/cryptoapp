@@ -52,6 +52,18 @@ a {
 	margin-right: 1rem;
 }
 
+
+.MuiAlert-root {
+	margin-left: 250px;
+}
+
+/* Select in news page*/
+
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+	height: 500px;
+}
+
+
 @media all and (max-width: 1020px) {
 	main {
 		margin: 0;
@@ -60,10 +72,8 @@ a {
 		margin-left: inherit;
 		width: 100%;
 	}
+	.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+		height: 300px;
+	}
+	
 }
-
-.MuiAlert-root {
-	margin-left: 250px;
-}
-
-
