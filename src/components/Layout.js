@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 const Layout = (props) => {
 	return (
 		<>
-			{/* <CssBaseline /> */}
+			<CssBaseline />
 
 			<Navbar />
 			{props.children}
