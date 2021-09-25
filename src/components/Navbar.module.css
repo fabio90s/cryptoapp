@@ -98,3 +98,6 @@
 .rightSide:global(#hidden) {
 	display: none;
 }
+.navbar li:hover, .sidebar li:hover {
+	background-color: var(--pink);
+}

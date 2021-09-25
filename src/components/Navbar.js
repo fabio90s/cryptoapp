@@ -29,24 +29,35 @@ const Navbar = () => {
 				</Typography>
 			</div>
 
-			<div className={matches ? styles.rightSide : styles.sidebar} id={showLinks ? 'hidden' : 'active'}>
+			<div
+				className={matches ? styles.rightSide : styles.sidebar}
+				id={showLinks ? 'hidden' : 'active'}
+			>
 				<MenuList className={!matches && styles.sidebar_menu} variant={'menu'}>
-					<MenuItem>
-						<HomeOutlined sx={{ marginRight: 1 }} />
-						<Link href="/">Home</Link>
-					</MenuItem>
-					<MenuItem sx={{ marginTop: 1 }}>
-						<FoundationOutlined sx={{ marginRight: 1 }} />
-						<Link href="/cryptocurrencies">Cryptocurrencies</Link>
-					</MenuItem>
-					<MenuItem sx={{ marginTop: 1 }}>
-						<MoneyOutlined sx={{ marginRight: 1 }} />
-						<Link href="/exchanges">Exchanges</Link>
-					</MenuItem>
-					<MenuItem sx={{ marginTop: 1 }}>
-						<ChatBubbleOutlined sx={{ marginRight: 1 }} />
-						<Link href="/news">News</Link>
-					</MenuItem>
+					<Link href="/">
+						<MenuItem>
+							<HomeOutlined sx={{ marginRight: 1 }} />
+							Home
+						</MenuItem>
+					</Link>
+					<Link href="/cryptocurrencies">
+						<MenuItem sx={{ marginTop: 1 }}>
+							<FoundationOutlined sx={{ marginRight: 1 }} />
+							Cryptocurrencies
+						</MenuItem>
+					</Link>
+					<Link href="/exchanges">
+						<MenuItem sx={{ marginTop: 1 }}>
+							<MoneyOutlined sx={{ marginRight: 1 }} />
+							Exchanges
+						</MenuItem>
+					</Link>
+					<Link href="/news">
+						<MenuItem sx={{ marginTop: 1 }}>
+							<ChatBubbleOutlined sx={{ marginRight: 1 }} />
+							News
+						</MenuItem>
+					</Link>
 				</MenuList>
 			</div>
 			{matches && (
