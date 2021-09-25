@@ -28,7 +28,8 @@ const Navbar = () => {
 					<Link href="/">CryptoNews</Link>
 				</Typography>
 			</div>
-			<div className={styles.rightSide} id={showLinks ? 'hidden' : 'active'}>
+
+			<div className={matches ? styles.rightSide : styles.sidebar} id={showLinks ? 'hidden' : 'active'}>
 				<MenuList className={!matches && styles.sidebar_menu} variant={'menu'}>
 					<MenuItem>
 						<HomeOutlined sx={{ marginRight: 1 }} />
