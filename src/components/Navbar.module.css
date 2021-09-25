@@ -48,7 +48,7 @@
 	align-items: flex-start;
 	padding-left: 1rem;
 }
-
+/* 
 .navbar_list {
 	display: flex;
 	flex-direction: column;
@@ -71,12 +71,12 @@
 	right: 0;
 	align-items: flex-start;
 	width: 300px;
-}
+} */
 
 .rightSide {
 	position: absolute;
 	right: 0px;
-	top: 80px;
+	top: 50px;
 	height: 200px;
 	width: 100%;
 	background-color: rgb(2, 39, 75);
