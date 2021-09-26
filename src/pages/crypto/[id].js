@@ -24,7 +24,7 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import TagIcon from '@mui/icons-material/Tag';
 
-const crypto = () => {
+const Crypto = () => {
 	const router = useRouter();
 	const { data, isFetching } = useGetSingleCryptoQuery(`${router.query.id}`);
 	const crypto = data?.data?.coin;
@@ -95,11 +95,11 @@ const crypto = () => {
 
 	return (
 		<StyledEngineProvider injectFirst>
-			<Grid container item>
+			<Grid container>
 				{isFetching && <Spinner />}
 
 				{!isFetching && (
-					<Grid container>
+					<Container>
 						<Container className={styles.title}>
 							<strong>
 								{data?.data?.coin?.name} ({data?.data?.coin?.symbol})
@@ -107,58 +107,66 @@ const crypto = () => {
 							<Divider sx={{ padding: 5 }} className={styles.divider} />
 						</Container>
 						<div className={styles.main}>
-							<div className={styles.left}>
-								<Typography className={styles.leftTitle} variant="h5">
-									{crypto.name} Price Chart
-								</Typography>
-								<Typography variant="h6">
-									{crypto.name} Value Statistics
-								</Typography>
-								<Typography variant="subtitle1">
-									An overview showing the stats of {crypto.name}{' '}
-								</Typography>
-								<List sx={{ display: 'flex' }}>
-									{stats?.map((item) => (
-										<>
-											<ListItem className={styles.coin_stats}>
-												<Typography className={styles.coin_stats_name}>
-													{item.icon} {item.title}:<strong>{item.value}</strong>
-												</Typography>
-											</ListItem>
-											<Divider />
-										</>
-									))}
-								</List>
-							</div>
-							<Grid />
-							<div className={styles.right}>
-								<Typography variant="p">
-									<strong>{crypto.change}%</strong> {crypto.name} change.
-								</Typography>
-								<Typography variant="h6">Other Statistics</Typography>
-								<Typography variant="subtitle1">
-									Overview about all cryptocurrencies
-								</Typography>
-								<List sx={{ display: 'flex' }}>
-									{globalOverview?.map((item) => (
-										<>
-											<ListItem className={styles.coin_stats}>
-												<Typography className={styles.coin_stats_name}>
-													{item.icon} {item.title}:{' '}
-													<strong>{item.value}</strong>
-												</Typography>
-											</ListItem>
-											<Divider />
-										</>
-									))}
-								</List>
-							</div>
+							<Grid item xs={12} sm={12} md={4} lg={4}>
+								<div className={styles.left}>
+									<Typography className={styles.leftTitle} variant="h5">
+										{crypto.name} Price Chart
+									</Typography>
+									<Typography variant="h6">
+										{crypto.name} Value Statistics
+									</Typography>
+									<Typography variant="subtitle1">
+										An overview showing the stats of {crypto.name}{' '}
+									</Typography>
+									<List sx={{ display: 'flex' }}>
+										{stats?.map((item) => (
+											<>
+												<ListItem className={styles.coin_stats_all}>
+													<Typography className={styles.coin_stats_name}>
+														{item.icon} {item.title}:
+													</Typography>
+													<Typography className={styles.coin_stats_value}>
+														<strong>{item.value}</strong>
+													</Typography>
+												</ListItem>
+												<Divider />
+											</>
+										))}
+									</List>
+								</div>
+							</Grid>
+							<Grid item xs={12} sm={12} md={4} lg={4}>
+								<div className={styles.right}>
+									<Typography variant="inherit">
+										<strong>{crypto.change}%</strong> {crypto.name} change.
+									</Typography>
+									<Typography variant="h6">Other Statistics</Typography>
+									<Typography variant="subtitle1">
+										Overview about all cryptocurrencies
+									</Typography>
+									<List sx={{ display: 'flex' }}>
+										{globalOverview?.map((item) => (
+											<>
+												<ListItem className={styles.coin_stats_all}>
+													<Typography className={styles.coin_stats_name}>
+														{item.icon} {item.title}:
+													</Typography>
+													<Typography className={styles.coin_stats_value}>
+														<strong>{item.value}</strong>
+													</Typography>
+												</ListItem>
+												<Divider />
+											</>
+										))}
+									</List>
+								</div>
+							</Grid>
 						</div>
-					</Grid>
+					</Container>
 				)}
 			</Grid>
 		</StyledEngineProvider>
 	);
 };
 
-export default crypto;
+export default Crypto;
