@@ -2,10 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import { useGetCryptosQuery } from '../services/cryptoApi';
+import { useGetAllCryptosQuery } from '../services/cryptoApi';
 
 export default function NewsSelect(props) {
-	const { data: cryptosList, isFetching } = useGetCryptosQuery(100);
+	const { data: cryptosList, isFetching } = useGetAllCryptosQuery();
 	const [placeholder, setPlaceholder] = React.useState('');
 
 	const handleChange = (event) => {

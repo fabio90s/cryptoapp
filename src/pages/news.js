@@ -121,7 +121,7 @@ const LatestNews = (props) => {
 											</CardActionArea>
 										</a>
 									</Link>
-									<CardActions>
+									<CardActions sx={{ overflow: 'auto' }}>
 										<CopyToClipboard
 											onCopy={() => setIsCopied(true)}
 											text={news.url}
@@ -161,6 +161,8 @@ const LatestNews = (props) => {
 									{isCopied && newsIndex === index && (
 										<div className={styles.alert}>
 											<Alert
+												selected
+												className={styles.alert}
 												onClose={() => setIsCopied(false) && setNewsIndex(null)}
 											>
 												Copied!

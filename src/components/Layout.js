@@ -6,7 +6,6 @@ const Layout = (props) => {
 	return (
 		<>
 			<CssBaseline />
-
 			<Navbar />
 			{props.children}
 		</>

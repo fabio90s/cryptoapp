@@ -33,7 +33,7 @@ const Navbar = () => {
 				className={matches ? styles.rightSide : styles.sidebar}
 				id={showLinks ? 'hidden' : 'active'}
 			>
-				<MenuList className={!matches && styles.sidebar_menu} variant={'menu'}>
+				<MenuList className={!matches ? styles.sidebar_menu : ''} variant={'menu'}>
 					<Link  passHref={true} href="/">
 						<MenuItem>
 							<HomeOutlined sx={{ marginRight: 1 }} />

@@ -11,9 +11,6 @@ main {
 	margin-right: 10px;
 	width: 100%;
 }
-.MuiPaper-elevation0 {
-	margin-left: 250px;
-}
 
 :root,
 body,
@@ -42,27 +39,37 @@ a {
 	margin-top: 2px;
 }
 
+.MuiList-root {
+	height: 10;
+}
+
 .css-11dwu8r-MuiButtonBase-root-MuiMenuItem-root,
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
 	min-height: 35px;
 }
 
+/* HAMBURGER MENU ICON */
+
 .css-i4bv87-MuiSvgIcon-root {
 	font-size: 2rem;
-	margin-right: 1rem;
+	margin-right: 2rem;
 }
 
+/* .MuiAlert-message {
+display: contents;
+} */
 
+/* 
 .MuiAlert-root {
 	margin-left: 250px;
-}
+	background-color: red;
+} */
 
 /* Select in news page*/
 
-.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+/* .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
 	height: 500px;
-}
-
+} */
 
 @media all and (max-width: 1020px) {
 	main {
@@ -72,8 +79,4 @@ a {
 		margin-left: inherit;
 		width: 100%;
 	}
-	.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-		height: 300px;
-	}
-	
 }

@@ -1,11 +1,164 @@
-import React from 'react'
+import {
+	Container,
+	Grid,
+	Divider,
+	Typography,
+	List,
+	ListItem,
+} from '@material-ui/core';
+import { useRouter } from 'next/dist/client/router';
+import React from 'react';
+import Spinner from '../../components/Spinner';
+import styles from '../../styles/CryptoDetails.module.css';
+import { useGetSingleCryptoQuery } from '../../services/cryptoApi';
+import millify from 'millify';
+// import HTMLParser from 'HTMLParser';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import CheckIcon from '@mui/icons-material/Check';
+import BoltIcon from '@mui/icons-material/Bolt';
+import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { StyledEngineProvider } from '@mui/material/styles';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import GraphicEqIcon from '@mui/icons-material/GraphicEq';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import TagIcon from '@mui/icons-material/Tag';
 
 const crypto = () => {
-    return (
-        <div>
-            crypto
-        </div>
-    )
-}
+	const router = useRouter();
+	const { data, isFetching } = useGetSingleCryptoQuery(`${router.query.id}`);
+	const crypto = data?.data?.coin;
+	const stats = [
+		{
+			title: 'Price to USD',
+			value: `$${crypto?.price && millify(crypto.price)}`,
+			icon: <MonetizationOnIcon />,
+		},
+		{
+			title: 'Rank',
+			value: `$${crypto?.rank && millify(crypto.rank)}`,
+			icon: <TagIcon />,
+		},
+		{
+			title: '24h Volume',
+			value: `$${crypto?.volume && millify(crypto.volume)}`,
+			icon: <BoltIcon />,
+		},
+		{
+			title: 'Market Cap',
+			value: `$${crypto?.marketCap && millify(crypto.marketCap)}`,
+			icon: <MonetizationOnIcon />,
+		},
+		{
+			title: 'All-time-high',
+			value: `$${
+				crypto?.allTimeHigh?.price && millify(crypto.allTimeHigh?.price)
+			}`,
+			icon: <ArrowUpwardIcon />,
+		},
+	];
 
-export default crypto
+	const globalOverview = [
+		{
+			title: 'Number of Markets',
+			value: crypto?.numberOfMarkets,
+			icon: <BarChartIcon />,
+		},
+		{
+			title: 'Number of Exchanges',
+			value: crypto?.numberOfExchanges,
+			icon: <GraphicEqIcon />,
+		},
+		{
+			title: 'Approved Supply',
+			value:
+				crypto?.approvedSupply === true ? (
+					<CheckIcon color="success" />
+				) : (
+					<DoNotDisturbIcon />
+				),
+			icon: <ErrorOutlineIcon />,
+		},
+		{
+			title: 'Total Supply',
+			value: crypto?.numberOfMarkets,
+			icon: <ErrorOutlineIcon />,
+		},
+		{
+			title: 'Circulating Supply',
+			value: `${
+				crypto?.circulatingSupply && millify(crypto?.circulatingSupply)
+			}`,
+			icon: <ErrorOutlineIcon />,
+		},
+	];
+
+	return (
+		<StyledEngineProvider injectFirst>
+			<Grid container item>
+				{isFetching && <Spinner />}
+
+				{!isFetching && (
+					<Grid container>
+						<Container className={styles.title}>
+							<strong>
+								{data?.data?.coin?.name} ({data?.data?.coin?.symbol})
+							</strong>
+							<Divider sx={{ padding: 5 }} className={styles.divider} />
+						</Container>
+						<div className={styles.main}>
+							<div className={styles.left}>
+								<Typography className={styles.leftTitle} variant="h5">
+									{crypto.name} Price Chart
+								</Typography>
+								<Typography variant="h6">
+									{crypto.name} Value Statistics
+								</Typography>
+								<Typography variant="subtitle1">
+									An overview showing the stats of {crypto.name}{' '}
+								</Typography>
+								<List sx={{ display: 'flex' }}>
+									{stats?.map((item) => (
+										<>
+											<ListItem className={styles.coin_stats}>
+												<Typography className={styles.coin_stats_name}>
+													{item.icon} {item.title}:<strong>{item.value}</strong>
+												</Typography>
+											</ListItem>
+											<Divider />
+										</>
+									))}
+								</List>
+							</div>
+							<Grid />
+							<div className={styles.right}>
+								<Typography variant="p">
+									<strong>{crypto.change}%</strong> {crypto.name} change.
+								</Typography>
+								<Typography variant="h6">Other Statistics</Typography>
+								<Typography variant="subtitle1">
+									Overview about all cryptocurrencies
+								</Typography>
+								<List sx={{ display: 'flex' }}>
+									{globalOverview?.map((item) => (
+										<>
+											<ListItem className={styles.coin_stats}>
+												<Typography className={styles.coin_stats_name}>
+													{item.icon} {item.title}:{' '}
+													<strong>{item.value}</strong>
+												</Typography>
+											</ListItem>
+											<Divider />
+										</>
+									))}
+								</List>
+							</div>
+						</div>
+					</Grid>
+				)}
+			</Grid>
+		</StyledEngineProvider>
+	);
+};
+
+export default crypto;
