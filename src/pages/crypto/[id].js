@@ -12,17 +12,17 @@ import Spinner from '../../components/Spinner';
 import styles from '../../styles/CryptoDetails.module.css';
 import { useGetSingleCryptoQuery } from '../../services/cryptoApi';
 import millify from 'millify';
-// import HTMLParser from 'HTMLParser';
+import HTMLReactParser from 'html-react-parser';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import CheckIcon from '@mui/icons-material/Check';
 import BoltIcon from '@mui/icons-material/Bolt';
 import DoNotDisturbIcon from '@mui/icons-material/DoNotDisturb';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import { StyledEngineProvider } from '@mui/material/styles';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import TagIcon from '@mui/icons-material/Tag';
+import Link from 'next/link';
 
 const Crypto = () => {
 	const router = useRouter();
@@ -102,17 +102,19 @@ const Crypto = () => {
 					<Grid container>
 						<Container className={styles.title}>
 							<strong>
-								<span>{data?.data?.coin?.name} ({data?.data?.coin?.symbol})</span>
+								<span>
+									{data?.data?.coin?.name} ({data?.data?.coin?.symbol})
+								</span>
 							</strong>
 							<br />
-							<Typography  className={styles.subtitle} variant="subtitle2">
+							<Typography className={styles.subtitle} variant="subtitle2">
 								{data?.data?.coin?.name} live price in US dollars. View value,
 								statistics, market cap and supply.
 							</Typography>
 							<Divider sx={{ padding: 5 }} className={styles.divider} />
 						</Container>
 						<div className={styles.main}>
-							<Grid container item xs={12} sm={12} md={6} lg={5}>
+							<Grid container item xs={12} sm={6} md={6} lg={5}>
 								<Container className={styles.left}>
 									<Typography className={styles.leftTitle} variant="h5">
 										{crypto.name} Price Chart
@@ -140,7 +142,7 @@ const Crypto = () => {
 									</List>
 								</Container>
 							</Grid>
-							<Grid container item xs={12} sm={12} md={6} lg={5}>
+							<Grid container item xs={12} sm={6} md={6} lg={5}>
 								<Container className={styles.right}>
 									<Typography variant="inherit">
 										<strong>{crypto.change}%</strong> {crypto.name} change.
@@ -166,6 +168,38 @@ const Crypto = () => {
 									</List>
 								</Container>
 							</Grid>
+							<Container className={styles.crypto_info}>
+								<Typography variant="h3">
+									<strong>What is {crypto?.name}?</strong>
+								</Typography>
+								{HTMLReactParser(crypto?.description)}
+								<Divider />
+							</Container>
+
+							<Container className={styles.crypto_links}>
+								<Typography variant="h4">
+									<strong>{crypto?.name} Links</strong>
+								</Typography>
+								<List>
+									{crypto?.links.map((link) => (
+										<>
+											<ListItem className={styles.links_list}>
+												<Typography className={styles.link_name} variant="h6">
+													<strong>{link?.type}</strong>{' '}
+												</Typography>
+												<Typography variant="body1">
+													<Link passHref={true} href={link?.url}>
+														<a target="_blank" rel="noreferrer">
+															{link?.url}
+														</a>
+													</Link>
+												</Typography>
+											</ListItem>
+											<Divider />
+										</>
+									))}
+								</List>
+							</Container>
 						</div>
 					</Grid>
 				</Container>

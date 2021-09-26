@@ -12,12 +12,13 @@
 	font-size: 3rem;
 }
 
-.title strong, .title span {
+.title strong,
+.title span {
 	color: var(--pink);
 }
 
 .subtitle {
-    margin-top: 1rem !important;
+	margin-top: 1rem !important;
 }
 
 .divider {
@@ -72,4 +73,41 @@
 	display: flex !important;
 	flex-direction: column !important;
 	gap: 30px;
+}
+
+.crypto_info {
+	margin-top: 50px;
+}
+.crypto_info h3 {
+	color: var(--pink);
+	font-size: 18.75px;
+}
+
+.crypto_links {
+	padding: 3rem;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.links_list {
+	display: flex;
+	justify-content: space-between !important;
+	padding: 1rem !important;
+}
+
+.link_name {
+	text-transform: capitalize;
+}
+.links_list a {
+	display: flex;
+	justify-content: space-between !important;
+	color: var(--pink);
+	font-weight: bold;
+}
+
+@media all and (max-width: 480px) {
+	.crypto_links li {
+		display: flex;
+		flex-direction: column;
+	}
 }
