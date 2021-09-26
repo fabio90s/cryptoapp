@@ -94,21 +94,26 @@ const Crypto = () => {
 	];
 
 	return (
-		<StyledEngineProvider injectFirst>
-			<Grid container>
-				{isFetching && <Spinner />}
+		<>
+			{isFetching && <Spinner />}
 
-				{!isFetching && (
-					<Container>
+			{!isFetching && (
+				<Container>
+					<Grid container>
 						<Container className={styles.title}>
 							<strong>
-								{data?.data?.coin?.name} ({data?.data?.coin?.symbol})
+								<span>{data?.data?.coin?.name} ({data?.data?.coin?.symbol})</span>
 							</strong>
+							<br />
+							<Typography  className={styles.subtitle} variant="subtitle2">
+								{data?.data?.coin?.name} live price in US dollars. View value,
+								statistics, market cap and supply.
+							</Typography>
 							<Divider sx={{ padding: 5 }} className={styles.divider} />
 						</Container>
 						<div className={styles.main}>
-							<Grid item xs={12} sm={12} md={4} lg={4}>
-								<div className={styles.left}>
+							<Grid container item xs={12} sm={12} md={6} lg={5}>
+								<Container className={styles.left}>
 									<Typography className={styles.leftTitle} variant="h5">
 										{crypto.name} Price Chart
 									</Typography>
@@ -121,9 +126,9 @@ const Crypto = () => {
 									<List sx={{ display: 'flex' }}>
 										{stats?.map((item) => (
 											<>
-												<ListItem className={styles.coin_stats_all}>
+												<ListItem className={styles.coin_stats}>
 													<Typography className={styles.coin_stats_name}>
-														{item.icon} {item.title}:
+														{item.icon} {item.title}
 													</Typography>
 													<Typography className={styles.coin_stats_value}>
 														<strong>{item.value}</strong>
@@ -133,10 +138,10 @@ const Crypto = () => {
 											</>
 										))}
 									</List>
-								</div>
+								</Container>
 							</Grid>
-							<Grid item xs={12} sm={12} md={4} lg={4}>
-								<div className={styles.right}>
+							<Grid container item xs={12} sm={12} md={6} lg={5}>
+								<Container className={styles.right}>
 									<Typography variant="inherit">
 										<strong>{crypto.change}%</strong> {crypto.name} change.
 									</Typography>
@@ -147,7 +152,7 @@ const Crypto = () => {
 									<List sx={{ display: 'flex' }}>
 										{globalOverview?.map((item) => (
 											<>
-												<ListItem className={styles.coin_stats_all}>
+												<ListItem className={styles.coin_stats}>
 													<Typography className={styles.coin_stats_name}>
 														{item.icon} {item.title}:
 													</Typography>
@@ -159,13 +164,13 @@ const Crypto = () => {
 											</>
 										))}
 									</List>
-								</div>
+								</Container>
 							</Grid>
 						</div>
-					</Container>
-				)}
-			</Grid>
-		</StyledEngineProvider>
+					</Grid>
+				</Container>
+			)}
+		</>
 	);
 };
 
