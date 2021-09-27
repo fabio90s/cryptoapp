@@ -119,7 +119,7 @@ const Crypto = () => {
 		<>
 			{isFetching && <Spinner />}
 			{!isFetching && (
-				<Container>
+				<Container id="back-to-top-anchor">
 					<Grid container>
 						<Container className={styles.title}>
 							<strong>
@@ -145,6 +145,7 @@ const Crypto = () => {
 									value={timeframe}
 									label="Time period"
 									onChange={selectHandler}
+									
 								>
 									{time.map((time) => (
 										<MenuItem key={time} value={time}>

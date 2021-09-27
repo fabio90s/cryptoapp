@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState, useMemo } from 'react';
 
 function MyApp({ Component, pageProps }) {
-	const [darkMode, setDarkMode] = useState('dark');
+	const [darkMode, setDarkMode] = useState('light');
 	const getTheme = (mode) => {
 		setDarkMode(mode);
 	};
@@ -23,7 +23,6 @@ function MyApp({ Component, pageProps }) {
 			}),
 		[darkMode]
 	);
-
 	return (
 		<StyledEngineProvider injectFirst>
 			<ThemeProvider theme={theme}>

@@ -30,7 +30,7 @@ const Cryptocurrencies = (props) => {
 	return (
 		<>
 			{!props.simplified && (
-				<Container>
+				<Container id='back-to-top-anchor'>
 					<Input
 						placeholder="Search Cryptocurrency"
 						onChange={(e) => setSearch(e.target.value)}

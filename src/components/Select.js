@@ -39,7 +39,7 @@ export default function NewsSelect(props) {
 								{'All'}
 							</MenuItem>
 							{cryptosList?.data?.coins?.map((item) => (
-								<MenuItem style={{display: 'flex'}} key={item.name} value={item.name}>
+								<MenuItem style={{display: 'flex', backgroundColor: 'white', color: 'black'}} key={item.name} value={item.name}>
 									{item.name}
 								</MenuItem>
 							))}

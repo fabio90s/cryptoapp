@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css';
 import millify from 'millify';
-import { Typography, Grid, Paper } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import Link from 'next/link';
 import { Container } from '@material-ui/core';
 import { useGetCryptosQuery } from '../services/cryptoApi';
@@ -17,8 +17,8 @@ export default function Home() {
 		<>
 			{isFetching && <Spinner/>}
 			{!isFetching && (
-				<Container  className={styles.main_container}>
-						<div className={styles.first_section}>
+				<Container   className={styles.main_container}>
+						<div id='back-to-top-anchor' className={styles.first_section}>
 							<Typography variant="h4" sx={{ pt: 2 }}>
 								Global Crypto Status
 							</Typography>

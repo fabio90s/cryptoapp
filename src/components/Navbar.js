@@ -17,7 +17,7 @@ import IconButton from '@mui/material/IconButton';
 
 const Navbar = (props) => {
 	const [drawer, setDrawer] = useState(false);
-	const [darkMode, setDarkMode] = useState('dark');
+	const [darkMode, setDarkMode] = useState('light');
 	const [showLinks, setShowLinks] = useState(true);
 	const matches = useMediaQuery('(max-width:1020px)');
 	const drawerHandler = () => {
@@ -37,8 +37,12 @@ const Navbar = (props) => {
 						CryptoNews
 					</Link>
 				</Typography>
-				<IconButton style={{marginLeft: 10}} onClick={darkModeHandler}>
-					{darkMode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+				<IconButton style={{ marginLeft: 10 }} onClick={darkModeHandler}>
+					{darkMode === 'dark' ? (
+						<Brightness7Icon sx={{ color: 'white' }} />
+					) : (
+						<Brightness4Icon sx={{ color: 'white' }} />
+					)}
 				</IconButton>
 			</div>
 

@@ -39,7 +39,7 @@ const LatestNews = (props) => {
 	const [newsIndex, setNewsIndex] = useState(null);
 	const [newsCategory, setNewsCategory] = useState('Cryptocurrencies');
 	const altImg =
-		'https://cdn.icon-icons.com/icons2/1386/PNG/512/generic-crypto-cryptocurrency-cryptocurrencies-cash-money-bank-payment_95642.png';
+		'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@d5c68edec1f5eaec59ac77ff2b48144679cebca1/svg/color/btc.svg';
 
 	const { data: cryptoNews, isFetching } = useGetNewsQuery({
 		newsCategory,
@@ -64,6 +64,7 @@ const LatestNews = (props) => {
 			{isFetching && <Spinner />}
 			{!isFetching && (
 				<Container
+					id="back-to-top-anchor"
 					sx={{ marginTop: 5, display: 'flex', justifyContent: 'center' }}
 				>
 					<Grid container item className={styles.main_news}>
