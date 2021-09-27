@@ -32,18 +32,16 @@ a {
 	box-sizing: border-box;
 }
 
-.MuiMenuItem-root {
-	min-height: 40px;
-	/* padding-bottom: 1px;
-	margin-top: 2px; */
-	margin: 2px 0px 0px !important;
-	padding: 6px 12px 1px !important;
-	/* margin-left: 1rem !important; */
+.MuiPaper-root {
+	color: unset !important;
+	background-color: unset !important;
 }
 
-/* .MuiList-root {
-	height: 10;
-} */
+.MuiMenuItem-root {
+	min-height: 40px;
+	margin: 2px 0px 0px !important;
+	padding: 6px 12px 1px !important;
+}
 
 .css-11dwu8r-MuiButtonBase-root-MuiMenuItem-root,
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
@@ -55,22 +53,6 @@ a {
 .css-i4bv87-MuiSvgIcon-root {
 	margin-right: 1rem;
 }
-
-/* .MuiAlert-message {
-display: contents;
-} */
-
-/* 
-.MuiAlert-root {
-	margin-left: 250px;
-	background-color: red;
-} */
-
-/* Select in news page*/
-
-/* .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-	height: 500px;
-} */
 
 @media all and (max-width: 1020px) {
 	main {
