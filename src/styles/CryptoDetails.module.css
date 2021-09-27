@@ -105,6 +105,10 @@
 	font-weight: bold;
 }
 
+.chart_section {
+	margin-bottom: 5rem;
+}
+
 @media all and (max-width: 480px) {
 	.crypto_links li {
 		display: flex;

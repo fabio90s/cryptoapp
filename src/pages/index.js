@@ -57,6 +57,7 @@ export default function Home() {
 							justifyContent: 'space-between',
 							marginTop: 40,
 							marginBottom: 40,
+							flexWrap: 'wrap',
 						}}
 					>
 						<Typography variant={'h4'} xs={4}>
@@ -72,6 +73,7 @@ export default function Home() {
 							display: 'flex',
 							justifyContent: 'space-between',
 							marginTop: 40,
+							flexWrap: 'wrap',
 						}}
 					>
 						<Typography variant={'h4'}>Latest Crypto News</Typography>

@@ -46,7 +46,7 @@ const Cryptocurrencies = (props) => {
 							<Grid item key={crypto.id} xs={12} sm={6} md={4} lg={3}>
 								<Link passHref={true} href={`/crypto/${crypto.id}`}>
 									<Card raised={true}>
-										{/* <CardActionArea> */}
+										<CardActionArea>
 										<CardHeader
 											title={`${crypto.rank}. ${crypto.name}`}
 											avatar={
@@ -62,7 +62,7 @@ const Cryptocurrencies = (props) => {
 											<p>Market Cap: {millify(crypto.marketCap)}</p>
 											<p>Daily Change: {millify(crypto.change)}%</p>
 										</CardContent>
-										{/* </CardActionArea> */}
+										</CardActionArea>
 									</Card>
 						   	</Link> 
 							</Grid>
