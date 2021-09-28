@@ -2,55 +2,54 @@ import styles from '../styles/Home.module.css';
 import millify from 'millify';
 import { Typography, Grid } from '@mui/material';
 import Link from 'next/link';
-import { Container } from '@material-ui/core';
+import { Container } from '@mui/material';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import Cryptocurrencies from './cryptocurrencies';
 import LatestNews from './news';
 import Spinner from '../components/Spinner';
 
-
 export default function Home() {
 	const { data, isFetching } = useGetCryptosQuery(10);
-
+	
 	const globalStats = data?.data?.stats;
 	return (
 		<>
-			{isFetching && <Spinner/>}
+			{isFetching && <Spinner />}
 			{!isFetching && (
-				<Container   className={styles.main_container}>
-						<div id='back-to-top-anchor' className={styles.first_section}>
-							<Typography variant="h4" sx={{ pt: 2 }}>
-								Global Crypto Status
-							</Typography>
-							<Grid spacing={2} container direction="row" sx={{ pt: 2 }}>
-								<Grid item xs={12} sm={4} md={4} lg={4}>
-									Total Cryptocurrencies
-									<br />
-									<strong>{globalStats.total.toLocaleString('en-US')}</strong>
-								</Grid>
-								<Grid item xs={12} sm={4} md={4} lg={4}>
-									Total Exchanges
-									<br />
-									<strong>{millify(globalStats.totalExchanges)}</strong>
-								</Grid>
-								<Grid item xs={12} sm={4} md={4} lg={4}>
-									Total Market Cap
-									<br />
-									<strong>{millify(globalStats.totalMarketCap)}</strong>
-								</Grid>
-								<Grid item xs={12} sm={4} md={4} lg={4}>
-									Total 24h Volume
-									<br />
-									<strong>{millify(globalStats.total24hVolume)}</strong>
-								</Grid>
-								<Grid item xs={12} sm={4} md={4} lg={4}>
-									Total Markets
-									<br />
-									<strong>{millify(globalStats.totalMarkets)}</strong>
-								</Grid>
+				<Container className={styles.main_container}>
+					<div className={styles.first_section}>
+						<Typography id="back-to-top-anchor" variant="h4" sx={{ pt: 2 }}>
+							Global Crypto Status
+						</Typography>
+						<Grid spacing={2} container direction="row" sx={{ pt: 2 }}>
+							<Grid item xs={12} sm={4} md={4} lg={4}>
+								Total Cryptocurrencies
+								<br />
+								<strong>{globalStats.total.toLocaleString('en-US')}</strong>
 							</Grid>
-						</div>
-			
+							<Grid item xs={12} sm={4} md={4} lg={4}>
+								Total Exchanges
+								<br />
+								<strong>{millify(globalStats.totalExchanges)}</strong>
+							</Grid>
+							<Grid item xs={12} sm={4} md={4} lg={4}>
+								Total Market Cap
+								<br />
+								<strong>{millify(globalStats.totalMarketCap)}</strong>
+							</Grid>
+							<Grid item xs={12} sm={4} md={4} lg={4}>
+								Total 24h Volume
+								<br />
+								<strong>{millify(globalStats.total24hVolume)}</strong>
+							</Grid>
+							<Grid item xs={12} sm={4} md={4} lg={4}>
+								Total Markets
+								<br />
+								<strong>{millify(globalStats.totalMarkets)}</strong>
+							</Grid>
+						</Grid>
+					</div>
+
 					<div
 						style={{
 							display: 'flex',
@@ -83,7 +82,7 @@ export default function Home() {
 							</Link>
 						</Typography>
 					</div>
-					<LatestNews simplified={true}/>
+					<LatestNews simplified={true} />
 				</Container>
 			)}
 		</>

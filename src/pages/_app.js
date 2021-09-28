@@ -8,6 +8,7 @@ import { Paper } from '@mui/material';
 import Head from 'next/head';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState, useMemo } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function MyApp({ Component, pageProps }) {
 	const [darkMode, setDarkMode] = useState('light');
@@ -23,31 +24,31 @@ function MyApp({ Component, pageProps }) {
 			}),
 		[darkMode]
 	);
+
 	return (
 		<StyledEngineProvider injectFirst>
 			<ThemeProvider theme={theme}>
-				<Provider store={store}>
-					<Paper sx={{ marginLeft: '250px' }} elevation={0}>
+				<CssBaseline />
+				<Paper sx={{ marginLeft: '250px' }} elevation={0}>
+					<Provider store={store}>
 						<Layout onGetTheme={getTheme}>
-							<main>
-								<Head>
-									<title>Crypto News</title>
-									<link
-										rel="stylesheet"
-										href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-									/>
-									<meta
-										name="viewport"
-										content="initial-scale=1.0, width=device-width"
-									/>
-								</Head>
-								<Component {...pageProps} />
+							<Head>
+								<title>Crypto News</title>
+								<link
+									rel="stylesheet"
+									href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+								/>
+								<meta
+									name="viewport"
+									content="initial-scale=1.0, width=device-width"
+								/>
+							</Head>
+							<Component {...pageProps} />
 
-								<Footer></Footer>
-							</main>
+							<Footer></Footer>
 						</Layout>
-					</Paper>
-				</Provider>
+					</Provider>
+				</Paper>
 			</ThemeProvider>
 		</StyledEngineProvider>
 	);

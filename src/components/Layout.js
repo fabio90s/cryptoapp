@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
@@ -51,7 +50,6 @@ const Layout = (props) => {
 	};
 	return (
 		<>
-			<CssBaseline />
 			<Navbar onToggleMode={getMode} />
 			<ScrollTop {...props}>
 				<Fab

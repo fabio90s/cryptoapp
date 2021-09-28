@@ -83,12 +83,6 @@
 	font-size: 18.75px;
 }
 
-.crypto_links {
-	padding: 3rem;
-	display: flex;
-	flex-wrap: wrap;
-}
-
 .links_list {
 	display: flex;
 	justify-content: space-between !important;
@@ -98,6 +92,7 @@
 .link_name {
 	text-transform: capitalize;
 }
+
 .links_list a {
 	display: flex;
 	justify-content: space-between !important;

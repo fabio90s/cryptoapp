@@ -35,11 +35,15 @@ export default function NewsSelect(props) {
 							onClick={props.onClick}
 							helperText="Please select your crypto"
 						>
-							<MenuItem  style={{display: 'flex'}} key={1990} value={'All'}>
+							<MenuItem style={{ display: 'flex' }} key={1990} value={'All'}>
 								{'All'}
 							</MenuItem>
 							{cryptosList?.data?.coins?.map((item) => (
-								<MenuItem style={{display: 'flex', backgroundColor: 'white', color: 'black'}} key={item.name} value={item.name}>
+								<MenuItem
+									style={{ display: 'flex' }}
+									key={item.name}
+									value={item.name}
+								>
 									{item.name}
 								</MenuItem>
 							))}

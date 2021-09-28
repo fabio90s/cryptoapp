@@ -6,7 +6,7 @@ import {
 	List,
 	ListItem,
 	MenuItem,
-} from '@material-ui/core';
+} from '@mui/material';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import Spinner from '../../components/Spinner';
@@ -119,9 +119,9 @@ const Crypto = () => {
 		<>
 			{isFetching && <Spinner />}
 			{!isFetching && (
-				<Container id="back-to-top-anchor">
+				<Container >
 					<Grid container>
-						<Container className={styles.title}>
+						<Container id="back-to-top-anchor" className={styles.title}>
 							<strong>
 								<span>
 									{data?.data?.coin?.name} ({data?.data?.coin?.symbol})
@@ -132,7 +132,7 @@ const Crypto = () => {
 								{data?.data?.coin?.name} live price in US dollars. View value,
 								statistics, market cap and supply.
 							</Typography>
-							<Divider sx={{ padding: 5 }} className={styles.divider} />
+							<Divider className={styles.divider} />
 						</Container>
 						<Container className={styles.chart_section}>
 							<FormControl sx={{ width: 200, marginBottom: 5 }}>
@@ -145,7 +145,6 @@ const Crypto = () => {
 									value={timeframe}
 									label="Time period"
 									onChange={selectHandler}
-									
 								>
 									{time.map((time) => (
 										<MenuItem key={time} value={time}>
@@ -167,7 +166,7 @@ const Crypto = () => {
 								</Typography>
 								<Typography variant="inherit">
 									<strong>{crypto.change}%</strong> {crypto.name} change.
-									Current {crypto.name} price:
+									Current {crypto.name} price:{' '}
 									<strong>{millify(crypto.price)} </strong>
 								</Typography>
 							</div>
@@ -189,7 +188,7 @@ const Crypto = () => {
 									<Typography variant="subtitle1">
 										An overview showing the stats of {crypto.name}{' '}
 									</Typography>
-									<List sx={{ display: 'flex' }}>
+									<List sx={{ display: 'flex', flexDirection: 'column' }}>
 										{stats?.map((item) => (
 											<ListItem key={item.title} className={styles.coin_stats}>
 												<Typography className={styles.coin_stats_name}>
@@ -209,7 +208,7 @@ const Crypto = () => {
 									<Typography variant="subtitle1">
 										Overview about all cryptocurrencies
 									</Typography>
-									<List sx={{ display: 'flex' }}>
+									<List sx={{ display: 'flex', flexDirection: 'column' }}>
 										{globalOverview?.map((item) => (
 											<ListItem key={item.title} className={styles.coin_stats}>
 												<Typography className={styles.coin_stats_name}>

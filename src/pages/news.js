@@ -56,7 +56,7 @@ const LatestNews = (props) => {
 	return (
 		<>
 			{!props.simplified && (
-				<Typography sx={{ padding: 2 }} variant="h3">
+				<Typography id="back-to-top-anchor" sx={{ padding: 2 }} variant="h3">
 					Latest Crypto News
 				</Typography>
 			)}
@@ -64,7 +64,6 @@ const LatestNews = (props) => {
 			{isFetching && <Spinner />}
 			{!isFetching && (
 				<Container
-					id="back-to-top-anchor"
 					sx={{ marginTop: 5, display: 'flex', justifyContent: 'center' }}
 				>
 					<Grid container item className={styles.main_news}>

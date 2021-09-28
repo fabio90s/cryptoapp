@@ -10,11 +10,13 @@ import {
 	Input,
 	Avatar,
 	Container,
-} from '@material-ui/core';
+} from '@mui/material';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import styles from '../styles/Cryptocurrencies.module.css';
 import Spinner from '../components/Spinner';
-
+import CssBaseline from '@mui/material/CssBaseline';
 
 const Cryptocurrencies = (props) => {
 	const count = props.simplified ? 10 : 100;
@@ -29,8 +31,10 @@ const Cryptocurrencies = (props) => {
 	}, [cryptosList, search]);
 	return (
 		<>
+			<CssBaseline />
+
 			{!props.simplified && (
-				<Container id='back-to-top-anchor'>
+				<Container id="back-to-top-anchor">
 					<Input
 						placeholder="Search Cryptocurrency"
 						onChange={(e) => setSearch(e.target.value)}
@@ -38,33 +42,28 @@ const Cryptocurrencies = (props) => {
 					/>
 				</Container>
 			)}
-			{isFetching && <Spinner/>}
+			{isFetching && <Spinner />}
 			{!isFetching && (
 				<Container>
 					<Grid spacing={2} container item direction="row">
 						{cryptos?.map((crypto) => (
 							<Grid item key={crypto.id} xs={12} sm={6} md={4} lg={3}>
 								<Link passHref={true} href={`/crypto/${crypto.id}`}>
-									<Card raised={true}>
+									<Card color="text.secondary" raised={true}>
 										<CardActionArea>
-										<CardHeader
-											title={`${crypto.rank}. ${crypto.name}`}
-											avatar={
-												<Avatar
-													sx={{ marginTop: 20 }}
-													src={crypto.iconUrl}
-												></Avatar>
-											}
-										></CardHeader>
-										<CardContent>
-											<hr />
-											<p>Price: {millify(crypto.price)}</p>
-											<p>Market Cap: {millify(crypto.marketCap)}</p>
-											<p>Daily Change: {millify(crypto.change)}%</p>
-										</CardContent>
+											<CardHeader
+												title={`${crypto.rank}. ${crypto.name}`}
+												avatar={<Avatar src={crypto.iconUrl}></Avatar>}
+											></CardHeader>
+											<CardContent>
+												<hr />
+												<p>Price: {millify(crypto.price)}</p>
+												<p>Market Cap: {millify(crypto.marketCap)}</p>
+												<p>Daily Change: {millify(crypto.change)}% {Object.values(crypto.change).includes('-') ? <ArrowDownwardIcon/> : <ArrowUpwardIcon/>} </p>
+											</CardContent>
 										</CardActionArea>
 									</Card>
-						   	</Link> 
+								</Link>
 							</Grid>
 						))}
 					</Grid>
