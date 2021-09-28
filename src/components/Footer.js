@@ -9,7 +9,7 @@ function Copyright() {
 	return (
 		<Typography variant="body2" color="text.secondary">
 			{'Copyright © '}
-			<Link color="inherit" href="https://material-ui.com/">
+			<Link color="inherit" href="https://www.linkedin.com/in/fabio-catino/">
 				Fabio Catino
 			</Link>{' '}
 			{new Date().getFullYear()}
@@ -43,7 +43,7 @@ export default function Footer() {
 			>
 				<Container maxWidth="sm">
 					<Typography variant="body1">
-						Footer
+						Crypto
 					</Typography>
 					<Copyright />
 				</Container>

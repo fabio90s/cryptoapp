@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MenuItem, Typography, MenuList } from '@mui/material';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
@@ -34,7 +34,7 @@ const Navbar = (props) => {
 			<div className={styles.logo_container}>
 				<Typography className={styles.logo}>
 					<Link passHref={true} href="/">
-						CryptoNews
+						Crypto Updates
 					</Link>
 				</Typography>
 				<IconButton style={{ marginLeft: 10 }} onClick={darkModeHandler}>

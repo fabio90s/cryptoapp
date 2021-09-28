@@ -23,12 +23,14 @@ const Cryptocurrencies = (props) => {
 	const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
 	const [cryptos, setCryptos] = useState([]);
 	const [search, setSearch] = useState('');
+
 	useEffect(() => {
 		const filteredData = cryptosList?.data?.coins.filter((coin) =>
 			coin.name.toLowerCase().includes(search.toLowerCase())
 		);
 		setCryptos(filteredData);
 	}, [cryptosList, search]);
+
 	return (
 		<>
 			<CssBaseline />
@@ -59,7 +61,14 @@ const Cryptocurrencies = (props) => {
 												<hr />
 												<p>Price: {millify(crypto.price)}</p>
 												<p>Market Cap: {millify(crypto.marketCap)}</p>
-												<p>Daily Change: {millify(crypto.change)}% {Object.values(crypto.change).includes('-') ? <ArrowDownwardIcon/> : <ArrowUpwardIcon/>} </p>
+												<p>
+													Daily Change: {millify(crypto.change)}%{' '}
+													{Math.sign(crypto.change) === -1 ? (
+														<ArrowDownwardIcon color="error" />
+													) : (
+														<ArrowUpwardIcon color="success" />
+													)}{' '}
+												</p>
 											</CardContent>
 										</CardActionArea>
 									</Card>

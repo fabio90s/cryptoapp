@@ -31,6 +31,7 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import LineChart from '../../components/LineChart';
+import Head from 'next/head';
 
 const Crypto = () => {
 	const router = useRouter();
@@ -114,12 +115,19 @@ const Crypto = () => {
 	const selectHandler = (e) => {
 		setTimeframe(e.target.value);
 	};
-
 	return (
 		<>
+			<Head>
+				<title>{data?.data?.coin?.name}</title>
+				<link
+					rel="stylesheet"
+					href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+				/>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			{isFetching && <Spinner />}
 			{!isFetching && (
-				<Container >
+				<Container>
 					<Grid container>
 						<Container id="back-to-top-anchor" className={styles.title}>
 							<strong>
