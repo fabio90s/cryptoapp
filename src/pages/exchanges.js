@@ -25,7 +25,7 @@ export default function Exchanges() {
 		<>
 			{isFetching && <Spinner />}
 			{!isFetching && (
-				<Container sx={{padding: 5}}>
+				<Container sx={{ padding: 5 }}>
 					<TableContainer component={Paper}>
 						<Table aria-label="collapsible table">
 							<TableHead>
@@ -61,8 +61,11 @@ export default function Exchanges() {
 												)}
 											</TableCell>
 											<TableCell component="th" scope="row">
-												<Avatar alt='crypto-icon' src={exchange.iconUrl}> </Avatar> 
-                        {exchange.rank}.	<strong>{exchange.name}</strong> 
+												<Avatar
+													alt="crypto-icon"
+													src={exchange.iconUrl}
+												></Avatar>
+												{exchange.rank}. <strong>{exchange.name}</strong>
 											</TableCell>
 											<TableCell align="right">
 												${millify(exchange.volume)}
@@ -90,7 +93,7 @@ export default function Exchanges() {
 															gutterBottom
 															component="div"
 														>
-															{HTMLReactParser(exchange?.description || '')}
+															{HTMLReactParser(exchange?.description || 'No description available.')}
 														</Typography>
 														<Table size="small" aria-label="purchases"></Table>
 													</Box>
