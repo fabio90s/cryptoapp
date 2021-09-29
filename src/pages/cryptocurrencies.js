@@ -59,7 +59,7 @@ const Cryptocurrencies = (props) => {
 											></CardHeader>
 											<CardContent>
 												<hr />
-												<p>Price: {millify(crypto.price)}</p>
+												<p>Price: ${millify(crypto.price)}</p>
 												<p>Market Cap: {millify(crypto.marketCap)}</p>
 												<p>
 													Daily Change: {millify(crypto.change)}%{' '}
