@@ -15,6 +15,8 @@ import { useGetExchangesCryptoQuery } from '../services/cryptoApi';
 import Spinner from '../components/Spinner';
 import millify from 'millify';
 import HTMLReactParser from 'html-react-parser';
+import Link from 'next/link';
+import styles from '../styles/Exchanges.module.css';
 
 export default function Exchanges() {
 	const [excIndex, setExcIndex] = useState(null);
@@ -60,13 +62,23 @@ export default function Exchanges() {
 													</IconButton>
 												)}
 											</TableCell>
-											<TableCell component="th" scope="row">
-												<Avatar
-													alt="crypto-icon"
-													src={exchange.iconUrl}
-												></Avatar>
-												{exchange.rank}. <strong>{exchange.name}</strong>
+
+											<TableCell sx={{width: '300px'}}component="th" scope="row">
+												<Link passHref={true} href={exchange.websiteUrl}>
+													<a
+														className={styles.link}
+														target="_blank"
+														rel="noreferrer"
+													>
+														<Avatar sx={{float: 'left', marginRight: 2}}
+															alt="crypto-icon"
+															src={exchange.iconUrl}
+														></Avatar>
+														{exchange.rank}. <strong>{exchange.name}</strong>
+													</a>
+												</Link>
 											</TableCell>
+
 											<TableCell align="right">
 												${millify(exchange.volume)}
 											</TableCell>
@@ -93,7 +105,10 @@ export default function Exchanges() {
 															gutterBottom
 															component="div"
 														>
-															{HTMLReactParser(exchange?.description || 'No description available.')}
+															{HTMLReactParser(
+																exchange?.description ||
+																	'No description available.'
+															)}
 														</Typography>
 														<Table size="small" aria-label="purchases"></Table>
 													</Box>
