@@ -11,9 +11,9 @@ import { useState, useMemo, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 
 function MyApp({ Component, pageProps }) {
-	let userSetting = '';
+	let userSetting = 'light';
 	if (typeof window !== 'undefined') {
-		userSetting = localStorage.getItem('mode');
+		localStorage.getItem('mode') ? userSetting = localStorage.getItem('mode') : null;
 	}
 	useEffect(() => {
 		setDarkMode(userSetting);
