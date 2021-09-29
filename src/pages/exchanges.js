@@ -63,7 +63,7 @@ export default function Exchanges() {
 												)}
 											</TableCell>
 
-											<TableCell sx={{width: '300px'}}component="th" scope="row">
+											<TableCell component="th" scope="row">
 												<Link passHref={true} href={exchange.websiteUrl}>
 													<a
 														className={styles.link}

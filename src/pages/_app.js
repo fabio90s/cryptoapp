@@ -7,14 +7,25 @@ import store from '../store/store';
 import { Paper } from '@mui/material';
 import Head from 'next/head';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 
 function MyApp({ Component, pageProps }) {
+	let userSetting = '';
+	if (typeof window !== 'undefined') {
+		userSetting = localStorage.getItem('mode');
+	}
+	useEffect(() => {
+		setDarkMode(userSetting);
+	}, [userSetting]);
+
 	const [darkMode, setDarkMode] = useState('light');
-	const getTheme = (mode) => {
-		setDarkMode(mode);
+
+	const darkModeHandler = () => {
+		setDarkMode(darkMode === 'light' ? 'dark' : 'light');
+		localStorage.setItem('mode', darkMode === 'light' ? 'dark' : 'light');
 	};
+
 	const theme = useMemo(
 		() =>
 			createTheme({
@@ -31,7 +42,7 @@ function MyApp({ Component, pageProps }) {
 				<CssBaseline />
 				<Paper sx={{ marginLeft: '250px' }} elevation={0}>
 					<Provider store={store}>
-						<Layout onGetTheme={getTheme}>
+						<Layout darkModeHandler={darkModeHandler}>
 							<Head>
 								<title>Crypto News</title>
 								<link

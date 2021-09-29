@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
@@ -44,14 +43,10 @@ function ScrollTop(props) {
 }
 
 const Layout = (props) => {
-	const [mode, setMode] = useState('dark');
-	const getMode = (data) => {
-		setMode(data);
-		props.onGetTheme(mode);
-	};
+
 	return (
 		<>
-			<Navbar onToggleMode={getMode} />
+			<Navbar darkModeHandler={props.darkModeHandler} />
 			<ScrollTop {...props}>
 				<Fab
 					className={styles.fab}

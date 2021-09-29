@@ -17,17 +17,13 @@ import IconButton from '@mui/material/IconButton';
 
 const Navbar = (props) => {
 	const [drawer, setDrawer] = useState(false);
-	const [darkMode, setDarkMode] = useState('light');
 	const [showLinks, setShowLinks] = useState(true);
 	const matches = useMediaQuery('(max-width:1020px)');
 	const drawerHandler = () => {
 		setDrawer(!drawer);
 		setShowLinks(!showLinks);
 	};
-	const darkModeHandler = () => {
-		setDarkMode(darkMode === 'light' ? 'dark' : 'light');
-		props.onToggleMode(darkMode);
-	};
+
 
 	return (
 		<div className={matches ? styles.navbar : styles.sidebar}>
@@ -37,8 +33,8 @@ const Navbar = (props) => {
 						Crypto Updates
 					</Link>
 				</Typography>
-				<IconButton style={{ marginLeft: 10 }} onClick={darkModeHandler}>
-					{darkMode === 'dark' ? (
+				<IconButton style={{ marginLeft: 10 }} onClick={props.darkModeHandler}>
+					{props.darkMode === 'dark' ? (
 						<Brightness7Icon sx={{ color: 'white' }} />
 					) : (
 						<Brightness4Icon sx={{ color: 'white' }} />
