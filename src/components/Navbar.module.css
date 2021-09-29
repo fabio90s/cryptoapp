@@ -47,30 +47,7 @@
 	align-items: flex-start;
 	padding-left: 1rem !important;
 }
-/* 
-.navbar_list {
-	display: flex;
-	flex-direction: column;
-	left: -100%;
-	height: 80px;
-	position: absolute;
-	transition: all 0.5 ease;
-	opacity: 1;
-}
 
-.nav_active {
-	background-color: rgb(2, 39, 75);
-	left: 48px;
-	opacity: 1;
-	transition: all 0.5 ease-in-out;
-	display: flex;
-	flex-direction: column;
-	top: 123px;
-	z-index: 0;
-	right: 0;
-	align-items: flex-start;
-	width: 300px;
-} */
 
 .rightSide {
 	position: absolute;
